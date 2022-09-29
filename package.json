@@ -1,0 +1,19 @@
+{
+  "name": "docker-stater",
+  "version": "1.0.0",
+  "description": "docker starter",
+  "main": "index.js",
+  "scripts": {
+    "commit":"cz"
+  },
+  "author": "jayaram venkatanarayanan",
+  "license": "ISC",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
