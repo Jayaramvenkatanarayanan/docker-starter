@@ -4,7 +4,7 @@
   "description": "docker starter",
   "main": "index.js",
   "scripts": {
-    "commit":"cz"
+    "commit": "cz"
   },
   "author": "jayaram venkatanarayanan",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "express": "^4.18.1"
   }
 }
