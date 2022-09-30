@@ -1,13 +1,13 @@
-FROM node:latest
+FROM node
 
-WORKDIR /app
+WORKDIR /nodeApp
 
-COPY package.json .
+COPY package.json /nodeApp
 
 RUN npm install
 
-COPY . .
+COPY . /nodeApp
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD ["node","app.js"]
+CMD [ "node", "server.js" ]
