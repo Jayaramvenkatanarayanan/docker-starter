@@ -1,27 +1,6 @@
 # Docker Starter File
 Learn Docker
 
-## Lesson -1
-FROM node:latest -- docker image
-
-WORKDIR /app   --  workdir
-
-COPY package.json . -- copy the package.json
-
-RUN npm install  -- run command
-
-COPY . .  -- copy all
-
-EXPOSE 3000  -- port no
-
-CMD ["node","app.js"]  -- cmd to run
-
-docker build .  - > build
-
-docker run id ;  -- id
-
-docker stop "docker name" -- stop
-
 list
 ---
 docker ps
@@ -34,16 +13,40 @@ docker system prune -a
 
 optimize the docker file  - check the package.json if its not major change its will take the cache from layer
 
-FROM node
+```
+FROM node -- docker image
 
-WORKDIR /nodeApp
+WORKDIR /nodeApp --  workdir
 
-COPY package.json /nodeApp
+COPY package.json /nodeApp -- copy the package.json
 
-RUN npm install
+RUN npm install  -- run command
 
-COPY . /nodeApp
+COPY . /nodeApp -- copy all
 
-EXPOSE 80
+EXPOSE 80 -- port no
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "server.js" ] -- command
+
+```
+
+## Lesson -3
+
+docker start id / container name
+
+for destach mood
+
+docker run -p 9000:80 -d image
+
+```docker
+docker run -p 3000:80 -d b5db35f75b3a
+```
+
+
+for attach mood
+
+docker attach container name
+
+```docker
+docker run -p 3000:80 -d b5db35f75b3a
+```
