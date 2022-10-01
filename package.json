@@ -5,16 +5,23 @@
   "main": "index.js",
   "scripts": {
     "commit": "cz",
-    "start":"node server.js"
+    "start": "node server.js"
   },
   "author": "jayaram venkatanarayanan",
   "license": "ISC",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.1"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec </dev/tty && node_modules/.bin/cz --hook  || true"
     }
   },
   "dependencies": {
