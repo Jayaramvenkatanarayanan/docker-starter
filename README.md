@@ -73,7 +73,7 @@ docker run -p 9000:90 --rm -d --name nodeAppV1 node-app:v0.1
 
 ```
 
-## Lesson - 3
+## Lesson - 3 ( Volume )
 
 Managing Data & Working with volumns
 
@@ -113,4 +113,23 @@ check file and restart
 
 docker restart feedback-app
 
+
+Data presiste ( store data don't loss in container use Named volumn)
+
+docker volume ls
+
+Add named volumn
+
+docker run -p 9001:90 -d --name feedback-app-volume -v feedback:/nodeApplication/feedback --rm feedback-node-image:v.0.1
+
+feedback -> name
+
+/nodeApplication/feedback --> path to presiste the data
+
+(try stop the container & run again and check the path http://localhost:9001/feedback/jayaram.txt)
+
+
 ```
+Anonymous volumes have no specific source, therefore, when the container is deleted, you can instruct the Docker Engine daemon to remove them
+
+## Lesson - 3.1 Data Storage Building Mounts
