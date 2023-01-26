@@ -1,12 +1,12 @@
 FROM node:18-alpine
 
-WORKDIR /nodeApp
+WORKDIR /nodeApplication
 
-COPY package.json /nodeApp
+COPY package.json .
 
-RUN npm install
+RUN npm i
 
-COPY . /nodeApp
+COPY . .
 
 EXPOSE 90
 

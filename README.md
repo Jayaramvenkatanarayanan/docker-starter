@@ -77,4 +77,40 @@ docker run -p 9000:90 --rm -d --name nodeAppV1 node-app:v0.1
 
 Managing Data & Working with volumns
 
+create new feedback application
 
+```docker
+
+create image  & build with tag name
+
+FROM node:18-alpine
+
+WORKDIR /nodeApplication
+
+COPY package.json .
+
+RUN npm i
+
+COPY . .
+
+EXPOSE 90
+
+CMD [ "node", "server.js" ]
+
+terminal -->
+
+docker build -t feedback-node-image:v.0.1 .
+
+run docker container
+
+docker run -p 9001:90 -d --name feedback-app --rm feedback-node-image:v.0.1
+
+use container with out rm command & restart the app file will be available in same folder
+
+docker run -p 9001:90 -d --name feedback-app feedback-node-image:v.0.1
+
+check file and restart
+
+docker restart feedback-app
+
+```
