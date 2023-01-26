@@ -24,7 +24,7 @@ RUN npm install  -- run command
 
 COPY . /nodeApp -- copy all
 
-EXPOSE 80 -- port no
+EXPOSE 90 -- port no
 
 CMD [ "node", "server.js" ] -- command
 
@@ -36,10 +36,10 @@ docker start id / container name
 
 for destach mood
 
-docker run -p 9000:80 -d image
+docker run -p 9000:90 -d image
 
 ```docker
-docker run -p 3000:80 -d b5db35f75b3a
+docker run -p 3000:90 -d b5db35f75b3a
 ```
 
 
@@ -48,7 +48,7 @@ for attach mood
 docker attach container name
 
 ```docker
-docker run -p 3000:80 -a b5db35f75b3a
+docker run -p 3000:90 -a b5db35f75b3a
 ```
 for logs & list all image
 
@@ -56,15 +56,19 @@ docker logs -f container name ( -force )
 
 ```docker
 docker logs a354eadc5886
-docker logs -f 8faa10b83680 ( watch mood)
+docker logs -f 8faa10b83690 ( watch mood)
 docker images
 docker rm [container name ]
 docker rmi [image name ]
-docker run -p 3000:80 -d --rm imageID -> remove automatically when its stop
+
+docker run -p 3000:90 -d --rm imageID -> remove automatically when its stop
+
 docker image inspect imageID
-docker run -p 3000:80 -d --rm --name nodeApp 3ca33d9ee46f --name will given  custome name
-image name
-using tage command docker build -t nodeApp:v0.1 . -t name:tag
-docker run -p 9000:80 --rm -d --name nodeAppV1 node-app:v0.1
+docker run -p 3000:90 -d --rm --name nodeApp 3ca33d9ee46f --name will given  custome name
+
+rename the dokcer image name
+docker build -t nodeApp:v0.1 . -t name:tag
+
+docker run -p 9000:90 --rm -d --name nodeAppV1 node-app:v0.1
 ```
 
