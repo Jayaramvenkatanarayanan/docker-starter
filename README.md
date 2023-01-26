@@ -30,7 +30,7 @@ CMD [ "node", "server.js" ] -- command
 
 ```
 
-## Lesson -3
+## Lesson - 2.1
 
 docker start id / container name
 
@@ -70,5 +70,11 @@ rename the dokcer image name
 docker build -t nodeApp:v0.1 . -t name:tag
 
 docker run -p 9000:90 --rm -d --name nodeAppV1 node-app:v0.1
+
 ```
+
+## Lesson - 3
+
+Managing Data & Working with volumns
+
 
