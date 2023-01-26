@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 90
 
-CMD [ "node", "server.js" ]
+VOLUME [ "/nodeApplication/node_modules" ]
+
+CMD [ "npm", "start" ]

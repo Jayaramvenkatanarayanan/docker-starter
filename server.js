@@ -32,6 +32,7 @@ app.post('/create', async (req, res) => {
   const finalFilePath = path.join(__dirname, 'feedback', adjTitle + '.txt');
 
   await fs.writeFile(tempFilePath, content);
+  console.log("Welcome")
   exists(finalFilePath, async (exists) => {
     if (exists) {
       res.redirect('/exists');

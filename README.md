@@ -133,3 +133,44 @@ feedback -> name
 Anonymous volumes have no specific source, therefore, when the container is deleted, you can instruct the Docker Engine daemon to remove them
 
 ## Lesson - 3.1 Data Storage Building Mounts
+
+Local file changer refeclted in docker file
+
+Add mount point & some Anonymous volumes & optional for data presiste layer
+
+so we create 3 volumes
+
+```docker
+docker run -p 9001:90 -d --name feedback-app-mounts --rm -v feedback:/nodeApplication/feedback -v "/Users/jayaramvenkatanarayanan/Projects/Docker/docker-stater:/nodeApplication" -v /nodeApplication/node_modules feedback-node-image:v.0.1
+```
+above :
+-v feedback:/nodeApplication/feedback - > local named volume
+
+-v "/Users/jayaramvenkatanarayanan/Projects/Docker/docker-stater:/nodeApplication" - mount - local files changes refected to docker
+
+-v /nodeApplication/node_modules - Anonymous presiste node and reuse for above the mount
+
+Alternative add Anonymous presist in docker file.
+
+```docker
+
+FROM node:18-alpine
+
+WORKDIR /nodeApplication
+
+COPY package.json .
+
+RUN npm i
+
+COPY . .
+
+EXPOSE 90
+
+VOLUME [ "/nodeApplication/node_modules" ]
+
+CMD [ "npm", "start" ]  -- > added nodemon
+
+
+```
+
+
