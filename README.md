@@ -170,7 +170,36 @@ VOLUME [ "/nodeApplication/node_modules" ]
 
 CMD [ "npm", "start" ]  -- > added nodemon
 
+```
+Add Env variable
+
+```docker
+
+FROM node:18-alpine
+
+WORKDIR /nodeApplication
+
+COPY package.json .
+
+RUN npm i
+
+COPY . .
+
+ENV PORT 90
+
+EXPOSE ${PORT}
+
+VOLUME [ "/nodeApplication/node_modules" ]
+
+CMD [ "npm", "start" ]
+
+Added Port using --env
+
+docker run -p 9001:9000 --env PORT=9000 -d --name feedback-app-mounts  --rm -v feedback:/nodeApplication/feedback -v "/Users/jayaramvenkatanarayanan/Projects/Docker/docker-stater:/nodeApplication" -v /nodeApplication/node_modules feedback-app-env:V.2.0.0
+
+using .env file ( image name updated)
+
+docker run -p 9001:9001 --env-file ./.env -d --name feedback-app-mounts  --rm -v feedback:/nodeApplication/feedback -v "/Users/jayaramvenkatanarayanan/Projects/Docker/docker-stater:/nodeApplication" -v /nodeApplication/node_modules feedback-app-env-file:V.3.0.0
 
 ```
-
 

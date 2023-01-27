@@ -8,7 +8,9 @@ RUN npm i
 
 COPY . .
 
-EXPOSE 90
+ENV PORT 90
+
+EXPOSE ${PORT}
 
 VOLUME [ "/nodeApplication/node_modules" ]
 
