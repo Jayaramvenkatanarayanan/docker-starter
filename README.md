@@ -203,3 +203,29 @@ docker run -p 9001:9001 --env-file ./.env -d --name feedback-app-mounts  --rm -v
 
 ```
 
+passing Arg :
+
+FROM node:18-alpine
+
+WORKDIR /nodeApplication
+
+COPY package.json .
+
+RUN npm i
+
+COPY . .
+
+ARG  DEFAULT_PORT=90
+
+ENV PORT ${DEFAULT_PORT}
+
+EXPOSE ${PORT}
+
+VOLUME [ "/nodeApplication/node_modules" ]
+
+CMD [ "npm", "start" ]
+
+terminial command:
+docker build -t feedback-app-dev:V.3.0.0 --build-arg DEFAULT_PORT=9009 .
+
+if you not required the DEFAULT_PORT=9009 you can skip
