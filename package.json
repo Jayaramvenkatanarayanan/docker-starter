@@ -1,18 +1,19 @@
 {
   "name": "docker-stater",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "docker starter",
   "main": "index.js",
   "scripts": {
     "commit": "cz",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "jayaram venkatanarayanan",
   "license": "ISC",
   "devDependencies": {
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "nodemon": "^2.0.20"
   },
   "config": {
     "commitizen": {
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.0",
+    "config": "^3.3.9",
     "express": "^4.18.1"
   }
 }

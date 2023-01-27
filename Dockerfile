@@ -1,13 +1,19 @@
 FROM node:18-alpine
 
-WORKDIR /nodeApp
+WORKDIR /nodeApplication
 
-COPY package.json /nodeApp
+COPY package.json .
 
-RUN npm install
+RUN npm i
 
-COPY . /nodeApp
+COPY . .
 
-EXPOSE 90
+ARG  DEFAULT_PORT=90
 
-CMD [ "node", "server.js" ]
+ENV PORT ${DEFAULT_PORT}
+
+EXPOSE ${PORT}
+
+VOLUME [ "/nodeApplication/node_modules" ]
+
+CMD [ "npm", "start" ]
