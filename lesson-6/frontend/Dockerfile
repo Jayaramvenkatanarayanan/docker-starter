@@ -12,6 +12,6 @@ EXPOSE 3000
 
 # Add presist the nodemodules
 
-VOLUME [ "/frontend/node_modules" ]
+# VOLUME [ "/frontend/node_modules" ]
 
-CMD ["npm","start"]
+CMD ["npm","run","start"]

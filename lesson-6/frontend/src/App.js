@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import GoalInput from './components/goals/GoalInput';
 import CourseGoals from './components/goals/CourseGoals';
 import ErrorAlert from './components/UI/ErrorAlert';
-
+const host =  'localhost'
+const port = process.env.API_PORT || 9000
 function App() {
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +15,8 @@ function App() {
       setIsLoading(true);
 
       try {
-        const response = await fetch('http://localhost:9000/goals');
+
+        const response = await fetch(`http://${host}:${port}/goals`);
 
         const resData = await response.json();
 
@@ -39,7 +41,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:9000/goals', {
+      const response = await fetch(`http://${host}:${port}/goals`, {
         method: 'POST',
         body: JSON.stringify({
           text: goalText,
@@ -78,7 +80,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:9000/goals/' + goalId, {
+      const response = await fetch(`http://${host}:${port}/goals/` + goalId, {
         method: 'DELETE',
       });
 

@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo:4.2.3-bionic
+    container_name: mongodb
+    restart: on-failure
+    ports:
+      - 27017:27017
+    volumes:
+      - data:/data/db
+    networks:
+      - goals-app
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: goals-app-api
+    restart: on-failure
+    ports:
+      - 9000:90
+    volumes:
+      - logs:/api/logs
+      - ./backend:/api
+      - /api/node_modules
+    environment:
+      - VIRTUAL_HOST:goals-app-api
+    depends_on:
+      - mongodb
+    networks:
+      - goals-app
+      # - MONGO_INITDB_ROOT_USERNAME: admin
+      # - MONGO_INITDB_ROOT_PASSWORD: admin
+  #   env_file: - if need config all env files
+  #     - ../config/default.json
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: on-failure
+    environment:
+      - VIRTUAL_HOST:goals-app-ui
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    volumes:
+      - /frontend/node_modules
+      - ./frontend/src:/frontend/src
+    stdin_open: true
+    tty: true
+    networks:
+      - goals-app
+
+
+volumes:
+  data:
+  logs:
+
+networks:
+  goals-app:

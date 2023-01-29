@@ -12,6 +12,6 @@ EXPOSE 90
 
 # Add presist the nodemodules
 
-VOLUME [ "/api/node_modules","/api/logs" ]
+
 
 CMD ["npm","start"]

@@ -41,3 +41,5 @@ docker run -p 3000:3000 --rm -d --name goals-ui-mount -v "/Users/jayaramvenkatan
 
 VOLUME [ "/frontend/node_modules" ]
 ```
+
+Check docker compose file

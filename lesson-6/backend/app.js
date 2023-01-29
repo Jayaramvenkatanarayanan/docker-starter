@@ -5,7 +5,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-
+const config = require('config');
+const username = config.get('MONGO_INITDB_ROOT_USERNAME');
+const password = config.get('MONGO_INITDB_ROOT_PASSWORD');
 const Goal = require('./models/goal');
 
 const app = express();
@@ -84,7 +86,7 @@ app.delete('/goals/:id', async (req, res) => {
 });
 
 mongoose.connect(
-  'mongodb://mongodb:27017/course-goals',
+  `mongodb://${username}:${password}@mongodb:27017/course-goals?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
